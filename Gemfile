@@ -9,6 +9,8 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 # connect bootstrap
 gem 'bootstrap', '~> 5.1.3'
 
+gem 'activeadmin'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
