@@ -1,3 +1,8 @@
 <%= @product.title %>
+<div>Категории:
+    <% @product.categories.each do |category| %>
+        <div><%= category.title %></div>
+    <% end %>
+</div>
 
 <%= link_to 'Root', root_path, class: 'btn btn-success' %>
