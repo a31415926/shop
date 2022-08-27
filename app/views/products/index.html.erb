@@ -1,3 +1,13 @@
+Сортировка:
+<form>
+<select name="sort">
+    <% @sort.each do |k, v| %>
+        <option value=<%= k %> <%= params[:sort] == k.to_s ? ' selected' : '' %>><%= v %></option>
+    <% end %>
+</select>
+<input type='submit' value='Сортировать'>
+</form>
+
 <% @products.each do |product| %>
-    <%= product.title %>
+    <div> <%= link_to product.title, product %></div>
 <% end %>
