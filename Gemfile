@@ -11,6 +11,12 @@ gem 'bootstrap', '~> 5.1.3'
 
 gem 'activeadmin'
 
+# user's
+gem 'devise'
+
+# faker data
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -74,4 +80,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+
+group :development do
+  gem 'letter_opener_web', '~> 2.0'
 end
