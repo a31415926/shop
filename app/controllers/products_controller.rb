@@ -19,6 +19,11 @@ class ProductsController < ApplicationController
   def create
   end
 
+  def generate_products
+    ProductJob.perform_later(wait: 5)
+    redirect_to root_path, notice: "Success generate"
+  end 
+
   private
 
   def products_sort(sort)
