@@ -1,3 +1,7 @@
+<% @product.images.each do |image| %>
+    <%= image_tag image.variant(:thumbnail) %>
+<% end %>
+
 <%= @product.title %>
 <div>Категории:
     <% @product.categories.each do |category| %>
@@ -5,4 +9,5 @@
     <% end %>
 </div>
 
-<%= link_to 'Root', root_path, class: 'btn btn-success' %>
+<%= link_to 'Edit', edit_product_path, class: 'btn btn-success' %>
+<%= link_to 'Delete', product_path(@product), data: {'turbo-method': :delete}, class: 'btn btn-success' %>

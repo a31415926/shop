@@ -12,6 +12,9 @@
 <% @products.each do |product| %>
     <div class="col-sm-2 mt-2">
         <div class="card">
+            <% if product.images.any? %>
+                <%= image_tag product.images[0].variant(:thumbnail) %>
+            <% end %>
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body">
                 <h5 class="card-title"><%= product.title %></h5>
