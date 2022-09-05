@@ -8,7 +8,8 @@ class ProductsController < ApplicationController
       :old => 'От старых к новым',
     }
     field_sort = products_sort(params[:sort])
-    @products = Product.all.order(field_sort)
+    @pagy, @products = pagy(Product.all.order(field_sort), items: 12)
+
   end
 
   def show

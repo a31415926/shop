@@ -11,6 +11,10 @@ gem 'bootstrap', '~> 5.1.3'
 
 gem 'activeadmin'
 
+# pagination https://github.com/ddnexus/pagy
+gem 'pagy', '~> 5.10'
+
+
 # user's
 gem 'devise'
 
