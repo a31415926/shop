@@ -3,7 +3,10 @@ class ProductJob < ApplicationJob
 
   def perform(*args)
     10.times do | |
-      Product.create(title: Faker::Commerce.product_name)
+      Product.create(
+        title: Faker::Commerce.product_name, 
+        price: Faker::Commerce.price
+      )
     end
   end
 end
