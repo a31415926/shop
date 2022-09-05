@@ -3,12 +3,9 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit destroy update]
 
   def index
-    @sort = {
-      :new => 'От новых к старым',
-      :old => 'От старых к новым',
-    }
-    field_sort = products_sort(params[:sort])
-    @pagy, @products = pagy(Product.all.order(field_sort), items: 12)
+    products = Product.all
+    products = products.order(price: params[:price]) if params[:price].present?
+    @pagy, @products = pagy(products, items: 12)
 
   end
 
@@ -51,16 +48,5 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-  end
-
-  def products_sort(sort)
-    case sort
-    when 'old' #вначале старые
-      field_sort = {created_at: :asc}
-    when 'new' #вначале новые
-      field_sort = {created_at: :desc}
-    else 
-      field_sort = {created_at: :desc}
-    end
   end
 end

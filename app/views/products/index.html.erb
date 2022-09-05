@@ -1,13 +1,4 @@
-Сортировка:
-<form>
-<select name="sort">
-    <% @sort.each do |k, v| %>
-        <option value=<%= k %> <%= params[:sort] == k.to_s ? ' selected' : '' %>><%= v %></option>
-    <% end %>
-</select>
-<input type='submit' value='Сортировать'>
-</form>
-
+<%= render 'product_sort' %>
 <div class="container-fluid">
     <div class = "row">
         <% @products.each do |product| %>
