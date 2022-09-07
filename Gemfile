@@ -9,6 +9,8 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 # connect bootstrap
 gem 'bootstrap', '~> 5.1.3'
 
+gem 'bootstrap-icons-helper'
+
 gem 'activeadmin'
 
 # pagination https://github.com/ddnexus/pagy

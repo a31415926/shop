@@ -4,7 +4,7 @@
         <% @products.each do |product| %>
             <div class="col-sm-2 mt-2">
                 <div class="card">
-                    <% if product.images.any? %>
+                    <% if product.images.attached? %>
                         <%= image_tag product.images[0].variant(:thumbnail) %>
                     <% end %>
                     <div class="card-body">
@@ -14,6 +14,7 @@
                             <%= product.description %>
                         </p>
                         <%= link_to 'Open product', product, class: 'btn btn-primary' %>
+                        <%= link_to 'Add to cart', product_order_items_path(product), data: {"turbo-method": :post}, class: 'btn btn-outline-success' %>
                     </div>
                 </div>
             </div>

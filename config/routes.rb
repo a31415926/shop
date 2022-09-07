@@ -7,9 +7,15 @@ Rails.application.routes.draw do
   root "products#index"
 
   resources :products do
-    resources :products, only: %i[index new create show edit destroy update]
+    resources :order_items, only: %i[create update destroy]
     collection do 
       post 'generate_products', as: :fetch
+    end
+  end
+
+  resources :orders do
+    collection do
+      get 'basket'
     end
   end
 
