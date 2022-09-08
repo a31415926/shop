@@ -13,9 +13,10 @@ gem 'bootstrap-icons-helper'
 
 gem 'activeadmin'
 
+gem 'active_storage_validations'
+
 # pagination https://github.com/ddnexus/pagy
 gem 'pagy', '~> 5.10'
-
 
 # user's
 gem 'devise'
