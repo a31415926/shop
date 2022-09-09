@@ -2,7 +2,8 @@
     <%= image_tag image.variant(:thumbnail) %>
 <% end %>
 
-<%= @product.title %>
+<div><%= @product.title %></div>
+<div>Price: <%= @product.price %></div>
 <div>Категории:
     <% @product.categories.each do |category| %>
         <div><%= category.title %></div>

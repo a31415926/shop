@@ -6,6 +6,8 @@ class User < ApplicationRecord
   
   enum role: %i[customer admin], _prefix: true
 
+  has_many :orders, dependent: :nullify
+
   after_create :send_welcome_mail
 
   private

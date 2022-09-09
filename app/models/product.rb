@@ -13,4 +13,14 @@ class Product < ApplicationRecord
     img.variant :thumbnail, resize: "100x100"
     img.variant :large, resize: "300x300"
   end
+
+  before_save :send_mail_with_change_price, if: :price_changed?
+
+  private
+
+  def send_mail_with_change_price
+    User.joins(:orders => [:order_items]).where(orders: {status: :in_progress}, order_items: {product_id: self.id}).each do |user|
+      ProductMailer.with(product: self, user: user).changed_price.deliver_now
+    end
+  end 
 end
