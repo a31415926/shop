@@ -13,6 +13,7 @@
                             Price: <%= product.price %><br>
                             <%= product.description %>
                         </p>
+                        <p>Created: <%= product.created_at %></p>
                         <%= link_to 'Open product', product, class: 'btn btn-primary' %>
                         <%= link_to 'Add to cart', product_order_items_path(product), data: {"turbo-method": :post}, class: 'btn btn-outline-success' %>
                     </div>

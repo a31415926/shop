@@ -1,4 +1,6 @@
 <div class="container">
     <%= link_to 'Cheaper', products_path(price: :asc), class: (params[:price] == 'asc' ? 'fw-bold' : '')%>
     <%= link_to 'More expensive', products_path(price: :desc), class: (params[:price] == 'desc' ? 'fw-bold' : '') %>
+    <%= link_to 'New', products_path(created_at: :desc), class: (params[:created_at] == 'desc' ? 'fw-bold' : '') %>
+    <%= link_to 'Old', products_path(created_at: :asc), class: (params[:created_at] == 'asc' ? 'fw-bold' : '') %>
 </div>
