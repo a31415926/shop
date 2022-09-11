@@ -1,25 +1,34 @@
 <%= render 'product_sort' %>
 <div class="container-fluid">
-    <div class = "row">
-        <% @products.each do |product| %>
-            <div class="col-sm-2 mt-2">
-                <div class="card">
-                    <% if product.images.attached? %>
-                        <%= image_tag product.images[0].variant(:thumbnail) %>
-                    <% end %>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= product.title %></h5>
-                        <p class="card-text">
-                            Price: <%= product.price %><br>
-                            <%= product.description %>
-                        </p>
-                        <p>Created: <%= product.created_at %></p>
-                        <%= link_to 'Open product', product, class: 'btn btn-primary' %>
-                        <%= link_to 'Add to cart', product_order_items_path(product), data: {"turbo-method": :post}, class: 'btn btn-outline-success' %>
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 navbar-light bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <%= render 'products_filtering' %>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='row'>
+            <% @products.includes(images_attachments: :blob).each do |product| %>
+                <div class="col-sm-2 mt-1">
+                    <div class="card">
+                        <% if product.images.attached? %>
+                            <%= image_tag product.images[0].variant(:thumbnail) %>
+                        <% end %>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.title %></h5>
+                            <p class="card-text">
+                                Price: <%= product.price %><br>
+                                <%= product.description %>
+                            </p>
+                            <p>Created: <%= product.created_at %></p>
+                            <%= link_to 'Open product', product, class: 'btn btn-primary' %>
+                            <%= link_to 'Add to cart', product_order_items_path(product), data: {"turbo-method": :post}, class: 'btn btn-outline-success' %>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
+        </div>
     </div>
     <%== pagy_nav(@pagy) %>
 </div>

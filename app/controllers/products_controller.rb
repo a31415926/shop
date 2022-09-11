@@ -6,13 +6,19 @@ class ProductsController < ApplicationController
     products = Product.all
     products = products.order(price: params[:price]) if params[:price].present?
     products = products.order(created_at: params[:created_at]) if params[:created_at].present?
+    products = products.joins(:categories).where(categories: { id: params[:categories]}) if params[:categories].present?
+    @price_min = products.minimum(:price)
+    @price_max = products.maximum(:price)
+    @categories = Category.all
     @pagy, @products = pagy(products, items: 12)
 
   end
 
   def show; end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   def update
     if @product.update(product_params)
