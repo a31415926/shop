@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def generate_products
-    ProductJob.perform_later(wait: 5)
+    ProductJob.set(wait: 50.seconds).perform_later
     redirect_to root_path, notice: "Success generate"
   end 
 
