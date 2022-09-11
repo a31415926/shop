@@ -20,7 +20,7 @@ class Product < ApplicationRecord
 
   def send_mail_with_change_price
     User.joins(:orders => [:order_items]).where(orders: {status: :in_progress}, order_items: {product_id: self.id}).each do |user|
-      ProductMailer.with(product: self, user: user).changed_price.deliver_now
+      ProductMailer.with(product: self, user: user).changed_price.deliver_later
     end
   end 
 end

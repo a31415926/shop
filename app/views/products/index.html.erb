@@ -7,6 +7,7 @@
             </div>
         </div>
         <div class='container'>
+        <%== pagy_bootstrap_nav(@pagy) %>
             <div class='row'>
             <% @products.includes(images_attachments: :blob).each do |product| %>
                 <div class="col-sm-2 mt-1">
@@ -30,5 +31,4 @@
         </div>
         </div>
     </div>
-    <%== pagy_nav(@pagy) %>
 </div>
