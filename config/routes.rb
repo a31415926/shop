@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   resources :orders do
     collection do
-      get 'basket'
+      get :basket
+      get :checkout
     end
   end
 

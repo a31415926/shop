@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
     @total_count_goods = order.total_count_goods
   end
 
-  private
+  def checkout
+  end
 
-  
+  private
 end
