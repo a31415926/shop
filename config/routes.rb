@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :order_items, only: %i[create update destroy]
     collection do 
       post 'generate_products', as: :fetch
+      get 'send_product_to_telegram/:id' => :send_product_to_telegram
     end
   end
 
@@ -19,5 +20,7 @@ Rails.application.routes.draw do
       get :checkout
     end
   end
+
+  get 'telegram_auth', to: 'telegram#auth'
 
 end

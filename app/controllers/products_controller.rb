@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-
+  require 'net/http'
+  require 'json'
+  
   before_action :set_product, only: %i[show edit destroy update]
 
   def index
@@ -38,6 +40,23 @@ class ProductsController < ApplicationController
   end
 
   def create
+  end
+
+  def send_product_to_telegram
+    product = Product.find(params[:id])
+
+    User.where.not(id_tg: false).each do |user|
+      uri = URI("https://api.telegram.org/bot#{ENV['tg_token']}/sendMessage")
+      http = Net::HTTP::new(uri.hostname, uri.port)
+      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      req.body = {
+        chat_id: user.id_tg,
+        text: product.title
+      }.to_json
+      http.use_ssl = true
+      resp = http.request(req)
+    end
+    redirect_to product_path(product)
   end
 
   def generate_products
