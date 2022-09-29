@@ -21,6 +21,8 @@ gem 'pagy', '~> 5.10'
 # user's
 gem 'devise'
 
+gem "rails-patterns"
+
 # keys
 gem 'figaro'
 

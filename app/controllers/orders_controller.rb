@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   def basket
     order = current_order
-    @items = order.order_items.includes(:product)
+    order_items = current_order.order_items
+    @items = OrderItems::OrderItemsWithProductQuery.call(order_items, order_id: current_order.id)
     @total_price_goods = order.total_price_goods
     @total_count_goods = order.total_count_goods
   end
