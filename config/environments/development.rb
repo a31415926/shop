@@ -64,7 +64,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener_web
 
   # config.hosts << "/[a-z0-9-.]+\.ngrok\.io/"
-  config.hosts << "f5f0-78-137-5-103.eu.ngrok.io"
+  # config.hosts << "f5f0-78-137-5-103.eu.ngrok.io"
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

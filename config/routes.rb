@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     collection do
       get :basket
       get :checkout
+      # post 'confirm', as: :confirm
     end
   end
 
